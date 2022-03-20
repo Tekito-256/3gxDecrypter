@@ -86,6 +86,7 @@ int main(int argc, char **argv)
   if(!buffer)
   {
     printf("Failed to allocate memory.\n");
+    fclose(input);
     exit(-1);
   }
   fread(buffer, 1, fileSize, input);
