@@ -83,6 +83,11 @@ int main(int argc, char **argv)
 
   // Read the file
   buffer = malloc(fileSize);
+  if(!buffer)
+  {
+    printf("Failed to allocate memory.\n");
+    exit(-1);
+  }
   fread(buffer, 1, fileSize, input);
   fclose(input);
 
@@ -92,6 +97,7 @@ int main(int argc, char **argv)
   if(fileState != NEED_DECRYPT)
   {
     printf(FileErrMsg[fileState - 1], argv[1]);
+    free(buffer);
     exit(-1);
   }
 
@@ -109,6 +115,7 @@ int main(int argc, char **argv)
   if(!output)
   {
     printf("Failed to open %s!\n", argv[2]);
+    free(buffer);
     exit(-1);
   }
   fwrite(buffer, 1, fileSize, output);
