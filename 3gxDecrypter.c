@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 
   if(argc != 3)
   {
-    printf("3gxDecrypt <input.3gx> <output.3gx>\n");
+    printf("3gxDecrypter <input.3gx> <output.3gx>\n");
     exit(-1);
   }
 
